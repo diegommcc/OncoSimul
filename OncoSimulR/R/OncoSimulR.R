@@ -1150,6 +1150,8 @@ plot.oncosimul <- function(x,
                      ylab = ylab,
                      ylim = ylim,
                      xlim = xlim,
+                     legend.out = FALSE,
+                     legend.pos = 0,
                      ...)
     }
 

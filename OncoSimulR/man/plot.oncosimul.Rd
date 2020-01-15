@@ -306,8 +306,20 @@
   entries, and two for more than six.
 }
 
+\item{legend.out}{Change the position of the legend. By default, the position 
+  of the legend is on the top-left corner of the plot. If \code{TRUE},
+  the legend is displaced outside the plot, on the rigth side. The new
+  position is optimizied to Rmarkdown files. In the case that the canvas
+  has a different size, see argument \code{lengend.pos}.
+}
 
- 
+\item{legend.pos}{If \code{legend.out == TRUE}, the position of the legend
+  can be changed on the x axis by this argument. It allows to set a 
+  \code{inset} value (argument of \code{legend()} function) with respect to 
+  the rigth side of the plot.
+}
+  
+
   \item{\dots}{
     Other arguments passed to \code{plots}. For instance, \code{main}.
     
