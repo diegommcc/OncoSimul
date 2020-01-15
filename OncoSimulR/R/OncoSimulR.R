@@ -926,6 +926,8 @@ plot.oncosimulpop <- function(x, ask = TRUE,
                        vrange = vrange,
                        breakSortColors = breakSortColors,
                        legend.ncols = legend.ncols,
+                       legend.out = legend.out,
+                       legend.pos = legend.pos,
                        ...))
 }
 
@@ -1245,12 +1247,7 @@ plotClonesSt <- function(z,
     }
     
     ## Set variables to place the legend if legend.out = TRUE
-    if (! legend.out) {
-        mar = c(5, 4, 4, 2) + 0.1
-        xpd = FALSE
-        position = "topleft"
-        inset = 0
-    } else {
+    if (legend.out) {
         mar = c(4, 4.8, 3, 6)
         xpd = TRUE
         position = "right"
@@ -1260,9 +1257,15 @@ plotClonesSt <- function(z,
             inset = -0.2
         else
             inset = legend.pos
+    } else {
+        mar = c(5, 4, 4, 2) + 0.1
+        xpd = FALSE
+        position = "topleft"
+        inset = 0
     }
     
     if(type == "line") {
+        par(mar = mar)
         matplot(x = z$pops.by.time[, 1],
                 y = y,
                 log = log, type = "l",
@@ -1286,12 +1289,13 @@ plotClonesSt <- function(z,
                 if(length(ldrv) > 6) legend.ncols <- 2
                 else legend.ncols <- 1
             }
-            par(mar = mar, xpd = xpd)
+            par(xpd = xpd)
             legend(x = position, title = "Genotypes", lty = lty, 
                    inset = inset, col = col, lwd = lwd, legend = ldrv, 
                    ncol = legend.ncols)
         }
     } else {
+        par(mar = mar)
         ymax <- colSums(y)
         if((show == "drivers") || ((show == "genotypes") && (colauto))) {
             cll <- myhsvcols(ndr, ymax, srange = srange, vrange = vrange,
@@ -1339,17 +1343,19 @@ plotClonesSt <- function(z,
                          ...)
         }
         if(show == "drivers") {
+            par(mar = mar)
             if(legend.ncols == "auto") {
                 if(length(cll$colorsLegend$Drivers) > 6) legend.ncols <- 2
                 else legend.ncols <- 1
             }
-            par(mar = mar, xpd = xpd)
+            par(xpd = xpd)
             legend(x = position, title = "Number of drivers", 
                    inset = inset, pch = 15, 
                    col = cll$colorsLegend$Color, 
                    legend = cll$colorsLegend$Drivers, ncol = legend.ncols)
             
         } else if (show == "genotypes") {
+            par(mar = mar)
             if(!inherits(z, "oncosimul2")) {
                 ldrv <- genotypeLabel(z)
             } else {
@@ -1361,7 +1367,7 @@ plotClonesSt <- function(z,
                 if(length(ldrv) > 6) legend.ncols <- 2
                 else legend.ncols <- 1
             }
-            par(mar = mar, xpd = xpd)
+            par(xpd = xpd)
             legend(x = position, title = "Genotypes", pch = 15,
                    inset = inset, lty = lty, lwd = lwd,
                    col = cll$colors, legend = ldrv, ncol = legend.ncols)
