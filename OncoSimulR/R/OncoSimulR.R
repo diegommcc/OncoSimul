@@ -1045,6 +1045,8 @@ plot.oncosimul <- function(x,
                            vrange = c(0.8, 1),
                            breakSortColors = "oe",
                            legend.ncols = "auto",
+                           legend.out = FALSE,
+                           legend.pos = 0,
                            ...
                            ) {
 
@@ -1150,8 +1152,8 @@ plot.oncosimul <- function(x,
                      ylab = ylab,
                      ylim = ylim,
                      xlim = xlim,
-                     legend.out = FALSE,
-                     legend.pos = 0,
+                     legend.out = legend.out,
+                     legend.pos = legend.pos,
                      ...)
     }
 
