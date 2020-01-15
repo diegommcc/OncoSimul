@@ -1263,7 +1263,6 @@ plotClonesSt <- function(z,
     }
     
     if(type == "line") {
-        par(mar = mar)
         matplot(x = z$pops.by.time[, 1],
                 y = y,
                 log = log, type = "l",
@@ -1287,7 +1286,7 @@ plotClonesSt <- function(z,
                 if(length(ldrv) > 6) legend.ncols <- 2
                 else legend.ncols <- 1
             }
-            par(xpd = xpd)
+            par(mar = mar, xpd = xpd)
             legend(x = position, title = "Genotypes", lty = lty, 
                    inset = inset, col = col, lwd = lwd, legend = ldrv, 
                    ncol = legend.ncols)
@@ -1344,7 +1343,7 @@ plotClonesSt <- function(z,
                 if(length(cll$colorsLegend$Drivers) > 6) legend.ncols <- 2
                 else legend.ncols <- 1
             }
-            par(mar = mar)
+            par(mar = mar, xpd = xpd)
             legend(x = position, title = "Number of drivers", 
                    inset = inset, pch = 15, 
                    col = cll$colorsLegend$Color, 
@@ -1362,7 +1361,7 @@ plotClonesSt <- function(z,
                 if(length(ldrv) > 6) legend.ncols <- 2
                 else legend.ncols <- 1
             }
-            par(xpd = xpd)
+            par(mar = mar, xpd = xpd)
             legend(x = position, title = "Genotypes", pch = 15,
                    inset = inset, lty = lty, lwd = lwd,
                    col = cll$colors, legend = ldrv, ncol = legend.ncols)
